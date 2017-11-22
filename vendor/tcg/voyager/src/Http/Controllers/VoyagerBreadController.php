@@ -12,8 +12,6 @@ use TCG\Voyager\Events\BreadDataUpdated;
 use TCG\Voyager\Events\BreadImagesDeleted;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
-use App\UDetails;
-use App\User;
 
 class VoyagerBreadController extends Controller
 {
@@ -98,10 +96,6 @@ class VoyagerBreadController extends Controller
             $view = "voyager::$slug.browse";
         }
 
-        $totalUsers = count(UDetails::all());
-        $bannedUsers = count(UDetails::whereNotNull('deleted_at'));
-        $totalAdmins = count(User::all());
-
         return Voyager::view($view, compact(
             'dataType',
             'dataTypeContent',
@@ -110,9 +104,7 @@ class VoyagerBreadController extends Controller
             'orderBy',
             'sortOrder',
             'searchable',
-            'isServerSide',
-            'totalUsers',
-            'bannedUsers'
+            'isServerSide'
         ));
     }
 
