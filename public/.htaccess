@@ -4,10 +4,10 @@
     </IfModule>
 
     RewriteEngine On
-    <ifModule mod_headers.c>
+    <IfModule mod_headers.c>
         Header set Access-Control-Allow-Origin "*"
         Header always unset X-Frame-Options
-    </ifModule>
+    </IfModule>
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
