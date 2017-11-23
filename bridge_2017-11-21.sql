@@ -34,7 +34,7 @@ CREATE TABLE `bids` (
   `paymentMethod` varchar(100) DEFAULT NULL,
   `bizId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `bids` WRITE;
 /*!40000 ALTER TABLE `bids` DISABLE KEYS */;
@@ -57,7 +57,7 @@ CREATE TABLE `bidsrequisites` (
   `requisite` varchar(100) DEFAULT NULL,
   `strRef` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `bidsrequisites` WRITE;
 /*!40000 ALTER TABLE `bidsrequisites` DISABLE KEYS */;
@@ -92,11 +92,11 @@ CREATE TABLE `businessdetails` (
   `TaxNumber` varchar(100) DEFAULT NULL,
   `userId` int(11) DEFAULT NULL,
   `bizAreas` text,
-  `bizImage` varchar(255) DEFAULT NULL,
-  `bizWebsite` varchar(255) DEFAULT NULL,
-  `bizCountryReg` varchar(255) DEFAULT NULL,
-  `bizCountryOperatn` varchar(255) DEFAULT NULL,
-  `bizTwitter` varchar(255) DEFAULT NULL,
+  `bizImage` varchar(191) DEFAULT NULL,
+  `bizWebsite` varchar(191) DEFAULT NULL,
+  `bizCountryReg` varchar(191) DEFAULT NULL,
+  `bizCountryOperatn` varchar(191) DEFAULT NULL,
+  `bizTwitter` varchar(191) DEFAULT NULL,
   `bizRegYear` varchar(100) DEFAULT NULL,
   `bizPhoneNumber` varchar(100) DEFAULT NULL,
   `bizAddress` text,
@@ -119,23 +119,23 @@ CREATE TABLE `businessdetails` (
   `bizESignature` varchar(200) DEFAULT NULL,
   `bizBoardResolution` varchar(200) DEFAULT NULL,
   `bizAgencyAgreement` varchar(200) DEFAULT NULL,
-  `bizBankName` varchar(255) DEFAULT NULL,
-  `bizBankCountry` varchar(255) DEFAULT NULL,
-  `bizBankAddress` varchar(255) DEFAULT NULL,
-  `bizBankSwiftCode` varchar(255) DEFAULT NULL,
-  `bizBankBVNIdentity` varchar(255) DEFAULT NULL,
-  `bizBVNIdentityAuth` varchar(255) DEFAULT NULL,
-  `bizPaymentMode` varchar(255) DEFAULT NULL,
-  `bizCapitalCurrency` varchar(255) DEFAULT NULL,
-  `bizShareCapital` varchar(255) DEFAULT NULL,
-  `bizHiighestProject` varchar(255) DEFAULT NULL,
-  `bizBalanceSheet` varchar(255) DEFAULT NULL,
+  `bizBankName` varchar(191) DEFAULT NULL,
+  `bizBankCountry` varchar(191) DEFAULT NULL,
+  `bizBankAddress` varchar(191) DEFAULT NULL,
+  `bizBankSwiftCode` varchar(191) DEFAULT NULL,
+  `bizBankBVNIdentity` varchar(191) DEFAULT NULL,
+  `bizBVNIdentityAuth` varchar(191) DEFAULT NULL,
+  `bizPaymentMode` varchar(191) DEFAULT NULL,
+  `bizCapitalCurrency` varchar(191) DEFAULT NULL,
+  `bizShareCapital` varchar(191) DEFAULT NULL,
+  `bizHiighestProject` varchar(191) DEFAULT NULL,
+  `bizBalanceSheet` varchar(191) DEFAULT NULL,
   `bizClientSize` double DEFAULT NULL,
   `bizEmployeeSize` double DEFAULT NULL,
   `bizYearFirstContract` int(11) DEFAULT NULL,
-  `bizNonDisclosure` varchar(255) DEFAULT NULL,
-  `bizEthicalDeclaration` varchar(255) DEFAULT NULL,
-  `antiMoneyLaundering` varchar(255) DEFAULT NULL,
+  `bizNonDisclosure` varchar(191) DEFAULT NULL,
+  `bizEthicalDeclaration` varchar(191) DEFAULT NULL,
+  `antiMoneyLaundering` varchar(191) DEFAULT NULL,
   `bizNature` varchar(100) DEFAULT NULL,
   `active` tinyint(1) DEFAULT '0',
   `createdTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -143,7 +143,7 @@ CREATE TABLE `businessdetails` (
   UNIQUE KEY `bridgrName` (`bridgrName`) USING BTREE,
   UNIQUE KEY `uniqueCompany` (`bizName`,`bizIncorpNumber`) USING BTREE,
   UNIQUE KEY `bizIncorpNumber` (`bizIncorpNumber`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `businessdetails` WRITE;
 /*!40000 ALTER TABLE `businessdetails` DISABLE KEYS */;
@@ -173,8 +173,8 @@ CREATE TABLE `categories` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned DEFAULT NULL,
   `order` int(11) NOT NULL DEFAULT '1',
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -193,9 +193,9 @@ DROP TABLE IF EXISTS `data_rows`;
 CREATE TABLE `data_rows` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `data_type_id` int(10) unsigned NOT NULL,
-  `field` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `field` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `required` tinyint(1) NOT NULL DEFAULT '0',
   `browse` tinyint(1) NOT NULL DEFAULT '1',
   `read` tinyint(1) NOT NULL DEFAULT '1',
@@ -393,15 +393,15 @@ DROP TABLE IF EXISTS `data_types`;
 
 CREATE TABLE `data_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name_singular` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name_plural` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `model_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `policy_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `controller` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name_singular` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name_plural` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `icon` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `model_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `policy_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `controller` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `generate_permissions` tinyint(1) NOT NULL DEFAULT '0',
   `server_side` tinyint(4) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -441,7 +441,7 @@ CREATE TABLE `fieldcategories` (
   `categoryName` varchar(100) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `fieldcategories` WRITE;
 /*!40000 ALTER TABLE `fieldcategories` DISABLE KEYS */;
@@ -481,16 +481,16 @@ DROP TABLE IF EXISTS `menu_items`;
 CREATE TABLE `menu_items` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `menu_id` int(10) unsigned DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `target` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '_self',
-  `icon_class` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `target` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '_self',
+  `icon_class` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `color` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `order` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `route` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `route` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `parameters` text COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `menu_items_menu_id_foreign` (`menu_id`),
@@ -528,7 +528,7 @@ DROP TABLE IF EXISTS `menus`;
 
 CREATE TABLE `menus` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -559,7 +559,7 @@ CREATE TABLE `messages` (
   `message` text,
   `bidId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
@@ -570,7 +570,7 @@ DROP TABLE IF EXISTS `migrations`;
 
 CREATE TABLE `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -616,11 +616,11 @@ DROP TABLE IF EXISTS `pages`;
 CREATE TABLE `pages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `author_id` int(11) NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `excerpt` text COLLATE utf8mb4_unicode_ci,
   `body` text COLLATE utf8mb4_unicode_ci,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_description` text COLLATE utf8mb4_unicode_ci,
   `meta_keywords` text COLLATE utf8mb4_unicode_ci,
   `status` enum('ACTIVE','INACTIVE') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'INACTIVE',
@@ -638,8 +638,8 @@ CREATE TABLE `pages` (
 DROP TABLE IF EXISTS `password_resets`;
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -653,7 +653,7 @@ DROP TABLE IF EXISTS `permission_groups`;
 
 CREATE TABLE `permission_groups` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `permission_groups_name_unique` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -757,8 +757,8 @@ DROP TABLE IF EXISTS `permissions`;
 
 CREATE TABLE `permissions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `table_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `table_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `permission_group_id` int(10) unsigned DEFAULT NULL,
@@ -849,12 +849,12 @@ CREATE TABLE `posts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `author_id` int(11) NOT NULL,
   `category_id` int(11) DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seo_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seo_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `excerpt` text COLLATE utf8mb4_unicode_ci,
   `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `meta_description` text COLLATE utf8mb4_unicode_ci,
   `meta_keywords` text COLLATE utf8mb4_unicode_ci,
   `status` enum('PUBLISHED','DRAFT','PENDING') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'DRAFT',
@@ -879,7 +879,7 @@ CREATE TABLE `requestforexplanations` (
   `readStatus` tinyint(4) DEFAULT NULL,
   `message` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
@@ -890,16 +890,16 @@ DROP TABLE IF EXISTS `requestitems`;
 
 CREATE TABLE `requestitems` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `itemName` varchar(255) DEFAULT NULL,
+  `itemName` varchar(191) DEFAULT NULL,
   `itemDescription` text,
   `unitOfMeasure` varchar(50) DEFAULT NULL,
-  `itemQuantity` varchar(255) DEFAULT NULL,
+  `itemQuantity` varchar(191) DEFAULT NULL,
   `requestId` int(11) DEFAULT NULL,
   `createdTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `requestProfileBridgrName` varchar(50) DEFAULT NULL,
   `requestHash` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `requestitems` WRITE;
 /*!40000 ALTER TABLE `requestitems` DISABLE KEYS */;
@@ -949,7 +949,7 @@ CREATE TABLE `requests` (
   `requestRefNumber` varchar(100) DEFAULT NULL,
   `usdLocalExchangeRate` varchar(50) DEFAULT NULL,
   `requesBidStructure` varchar(50) DEFAULT NULL,
-  `requestAddress` varchar(255) DEFAULT NULL,
+  `requestAddress` varchar(191) DEFAULT NULL,
   `supplierList` text,
   `bidSubmissionCloseDate` datetime DEFAULT NULL,
   `paymentModel` varchar(50) DEFAULT NULL,
@@ -983,7 +983,7 @@ CREATE TABLE `requests` (
   `bidderHasSafetyPolicy` tinyint(1) DEFAULT '0',
   `timeHash` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `requests` WRITE;
 /*!40000 ALTER TABLE `requests` DISABLE KEYS */;
@@ -1035,12 +1035,12 @@ CREATE TABLE `rfqcontents` (
   `isSection` tinyint(1) DEFAULT '0',
   `isSubsection` tinyint(1) DEFAULT '0',
   `content` text,
-  `requestHash` varchar(255) DEFAULT NULL,
+  `requestHash` varchar(191) DEFAULT NULL,
   `dateCreated` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `lastModified` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
@@ -1051,8 +1051,8 @@ DROP TABLE IF EXISTS `roles`;
 
 CREATE TABLE `roles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -1078,13 +1078,13 @@ DROP TABLE IF EXISTS `settings`;
 
 CREATE TABLE `settings` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `details` text COLLATE utf8mb4_unicode_ci,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `order` int(11) NOT NULL DEFAULT '1',
-  `group` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `group` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `settings_key_unique` (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1119,7 +1119,7 @@ CREATE TABLE `supplierfilters` (
   `filterName` varchar(100) DEFAULT NULL,
   `filterStringRef` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `supplierfilters` WRITE;
 /*!40000 ALTER TABLE `supplierfilters` DISABLE KEYS */;
@@ -1146,12 +1146,12 @@ DROP TABLE IF EXISTS `terms`;
 
 CREATE TABLE `terms` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `termTitle` varchar(255) DEFAULT NULL,
+  `termTitle` varchar(191) DEFAULT NULL,
   `termContent` text,
-  `termCreator` varchar(255) DEFAULT NULL,
+  `termCreator` varchar(191) DEFAULT NULL,
   `createdTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `terms` WRITE;
 /*!40000 ALTER TABLE `terms` DISABLE KEYS */;
@@ -1179,10 +1179,10 @@ DROP TABLE IF EXISTS `translations`;
 
 CREATE TABLE `translations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `table_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `column_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `table_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `column_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `foreign_key` int(10) unsigned NOT NULL,
-  `locale` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `value` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -1198,9 +1198,9 @@ CREATE TABLE `translations` (
 DROP TABLE IF EXISTS `unitsofmeasure`;
 
 CREATE TABLE `unitsofmeasure` (
-  `UNITS` varchar(255) DEFAULT NULL,
-  `ABBREVIATIONS` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `UNITS` varchar(191) DEFAULT NULL,
+  `ABBREVIATIONS` varchar(191) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `unitsofmeasure` WRITE;
 /*!40000 ALTER TABLE `unitsofmeasure` DISABLE KEYS */;
@@ -1280,7 +1280,7 @@ CREATE TABLE `userdetails` (
   UNIQUE KEY `userkey1` (`userEmail`) USING BTREE,
   UNIQUE KEY `userkey2` (`userMobile`),
   KEY `eSignature` (`eSignature`,`smsVerifyCode`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `userdetails` WRITE;
 /*!40000 ALTER TABLE `userdetails` DISABLE KEYS */;
@@ -1303,10 +1303,10 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `role_id` int(11) DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'users/default.png',
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `avatar` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT 'users/default.png',
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
