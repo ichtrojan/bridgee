@@ -1,4 +1,9 @@
 <?php
+$url = parse_url(getenv("DATABASE_URL"));
+$host = isset($url["host"])? $url["host"] : "";
+$username = isset($url["user"])? $url["user"] : "";
+$password = isset($url["pass"])? $url["pass"] : "";
+$database = substr($url["path"], 1);
 
 return [
 
@@ -56,11 +61,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', $host),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', $database),
+            'username' => env('DB_USERNAME', $username),
+            'password' => env('DB_PASSWORD', $password),
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
