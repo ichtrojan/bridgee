@@ -1,5 +1,5 @@
 <?php
-$url = parse_url(getenv("DATABASE_URL"));
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $host = isset($url["host"])? $url["host"] : "";
 $username = isset($url["user"])? $url["user"] : "";
 $password = isset($url["pass"])? $url["pass"] : "";
@@ -46,31 +46,31 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
-            'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
+            'host' => $host,
+            'port' => 3306,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
+            'unix_socket' => '',
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'strict' => true,
             'engine' => null,
         ],
 
-        'pgsql' => [
-            'driver' => 'pgsql',
-            'host' => env('DB_HOST', $host),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', $database),
-            'username' => env('DB_USERNAME', $username),
-            'password' => env('DB_PASSWORD', $password),
-            'charset' => 'utf8',
-            'prefix' => '',
-            'schema' => 'public',
-            'sslmode' => 'prefer',
-        ],
+        // 'pgsql' => [
+        //     'driver' => 'pgsql',
+        //     'host' => env('DB_HOST', $host),
+        //     'port' => env('DB_PORT', '5432'),
+        //     'database' => env('DB_DATABASE', $database),
+        //     'username' => env('DB_USERNAME', $username),
+        //     'password' => env('DB_PASSWORD', $password),
+        //     'charset' => 'utf8',
+        //     'prefix' => '',
+        //     'schema' => 'public',
+        //     'sslmode' => 'prefer',
+        // ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
