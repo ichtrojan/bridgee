@@ -1,66 +1,6 @@
-# ************************************************************
-# Sequel Pro SQL dump
-# Version 4541
-#
-# http://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
-#
-# Host: 127.0.0.1 (MySQL 5.7.19)
-# Database: bridge
-# Generation Time: 2017-11-21 17:43:18 +0000
-# ************************************************************
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-
-# Dump of table bids
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `bids`;
-
-CREATE TABLE `bids` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `bidName` varchar(100) DEFAULT NULL,
-  `bidClosureDate` datetime DEFAULT NULL,
-  `supplyTimeFrame` text,
-  `paymentMileStone` varchar(100) DEFAULT NULL,
-  `paymentMethod` varchar(100) DEFAULT NULL,
-  `bizId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `bids` WRITE;
-/*!40000 ALTER TABLE `bids` DISABLE KEYS */;
-
 INSERT INTO `bids` (`id`, `bidName`, `bidClosureDate`, `supplyTimeFrame`, `paymentMileStone`, `paymentMethod`, `bizId`)
 VALUES
 	(1,'build a car','2017-11-25 00:00:00','a month','weekly','cash',NULL);
-
-/*!40000 ALTER TABLE `bids` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table bidsrequisites
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `bidsrequisites`;
-
-CREATE TABLE `bidsrequisites` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `requisite` varchar(100) DEFAULT NULL,
-  `strRef` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `bidsrequisites` WRITE;
-/*!40000 ALTER TABLE `bidsrequisites` DISABLE KEYS */;
 
 INSERT INTO `bidsrequisites` (`id`, `requisite`, `strRef`)
 VALUES
@@ -68,85 +8,6 @@ VALUES
 	(2,'Site Audit is Required','siteaudit'),
 	(3,'Professional Indemnity is Required','professionalindemnity'),
 	(4,'Warranty is Required','warrantyrequired');
-
-/*!40000 ALTER TABLE `bidsrequisites` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table businessdetails
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `businessdetails`;
-
-CREATE TABLE `businessdetails` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `bridgrName` varchar(100) NOT NULL,
-  `bizName` varchar(100) DEFAULT NULL,
-  `companyWebiste` varchar(100) DEFAULT NULL,
-  `legalStructure` varchar(100) DEFAULT NULL,
-  `bizIncorpNumber` varchar(100) DEFAULT NULL,
-  `companyLogo` varchar(100) DEFAULT NULL,
-  `bizEmail` varchar(100) DEFAULT NULL,
-  `bizFacebook` varchar(100) DEFAULT NULL,
-  `countryOfBiz` varchar(100) DEFAULT NULL,
-  `TaxNumber` varchar(100) DEFAULT NULL,
-  `userId` int(11) DEFAULT NULL,
-  `bizAreas` text,
-  `bizImage` varchar(191) DEFAULT NULL,
-  `bizWebsite` varchar(191) DEFAULT NULL,
-  `bizCountryReg` varchar(191) DEFAULT NULL,
-  `bizCountryOperatn` varchar(191) DEFAULT NULL,
-  `bizTwitter` varchar(191) DEFAULT NULL,
-  `bizRegYear` varchar(100) DEFAULT NULL,
-  `bizPhoneNumber` varchar(100) DEFAULT NULL,
-  `bizAddress` text,
-  `bizDescription` text NOT NULL,
-  `bizType` varchar(100) DEFAULT NULL,
-  `bizFirstYearExecution` varchar(20) DEFAULT NULL,
-  `requestBusinessId` int(11) DEFAULT NULL,
-  `bizServiceSector` varchar(20) DEFAULT NULL,
-  `countryPhoneCode` varchar(10) DEFAULT NULL,
-  `cacBizRegCert` varchar(200) DEFAULT NULL,
-  `vatCert` varchar(200) DEFAULT NULL,
-  `co2OtherBizDoc` varchar(200) DEFAULT NULL,
-  `co7OtherBizDoc` varchar(200) DEFAULT NULL,
-  `bizCeritifationns` varchar(200) DEFAULT NULL,
-  `bizPermits` varchar(200) DEFAULT NULL,
-  `bizCurrentIncomeDoc` varchar(200) DEFAULT NULL,
-  `bizAuditedSoA` varchar(200) DEFAULT NULL,
-  `bizQualityPolicy` varchar(200) DEFAULT NULL,
-  `bizHSEPolicy` varchar(200) DEFAULT NULL,
-  `bizESignature` varchar(200) DEFAULT NULL,
-  `bizBoardResolution` varchar(200) DEFAULT NULL,
-  `bizAgencyAgreement` varchar(200) DEFAULT NULL,
-  `bizBankName` varchar(191) DEFAULT NULL,
-  `bizBankCountry` varchar(191) DEFAULT NULL,
-  `bizBankAddress` varchar(191) DEFAULT NULL,
-  `bizBankSwiftCode` varchar(191) DEFAULT NULL,
-  `bizBankBVNIdentity` varchar(191) DEFAULT NULL,
-  `bizBVNIdentityAuth` varchar(191) DEFAULT NULL,
-  `bizPaymentMode` varchar(191) DEFAULT NULL,
-  `bizCapitalCurrency` varchar(191) DEFAULT NULL,
-  `bizShareCapital` varchar(191) DEFAULT NULL,
-  `bizHiighestProject` varchar(191) DEFAULT NULL,
-  `bizBalanceSheet` varchar(191) DEFAULT NULL,
-  `bizClientSize` double DEFAULT NULL,
-  `bizEmployeeSize` double DEFAULT NULL,
-  `bizYearFirstContract` int(11) DEFAULT NULL,
-  `bizNonDisclosure` varchar(191) DEFAULT NULL,
-  `bizEthicalDeclaration` varchar(191) DEFAULT NULL,
-  `antiMoneyLaundering` varchar(191) DEFAULT NULL,
-  `bizNature` varchar(100) DEFAULT NULL,
-  `active` tinyint(1) DEFAULT '0',
-  `createdTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `bridgrName` (`bridgrName`) USING BTREE,
-  UNIQUE KEY `uniqueCompany` (`bizName`,`bizIncorpNumber`) USING BTREE,
-  UNIQUE KEY `bizIncorpNumber` (`bizIncorpNumber`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `businessdetails` WRITE;
-/*!40000 ALTER TABLE `businessdetails` DISABLE KEYS */;
 
 INSERT INTO `businessdetails` (`id`, `bridgrName`, `bizName`, `companyWebiste`, `legalStructure`, `bizIncorpNumber`, `companyLogo`, `bizEmail`, `bizFacebook`, `countryOfBiz`, `TaxNumber`, `userId`, `bizAreas`, `bizImage`, `bizWebsite`, `bizCountryReg`, `bizCountryOperatn`, `bizTwitter`, `bizRegYear`, `bizPhoneNumber`, `bizAddress`, `bizDescription`, `bizType`, `bizFirstYearExecution`, `requestBusinessId`, `bizServiceSector`, `countryPhoneCode`, `cacBizRegCert`, `vatCert`, `co2OtherBizDoc`, `co7OtherBizDoc`, `bizCeritifationns`, `bizPermits`, `bizCurrentIncomeDoc`, `bizAuditedSoA`, `bizQualityPolicy`, `bizHSEPolicy`, `bizESignature`, `bizBoardResolution`, `bizAgencyAgreement`, `bizBankName`, `bizBankCountry`, `bizBankAddress`, `bizBankSwiftCode`, `bizBankBVNIdentity`, `bizBVNIdentityAuth`, `bizPaymentMode`, `bizCapitalCurrency`, `bizShareCapital`, `bizHiighestProject`, `bizBalanceSheet`, `bizClientSize`, `bizEmployeeSize`, `bizYearFirstContract`, `bizNonDisclosure`, `bizEthicalDeclaration`, `antiMoneyLaundering`, `bizNature`, `active`, `createdTime`)
 VALUES
@@ -159,58 +20,6 @@ VALUES
 	(19,'adeboyo1507842531','Adeboyo & Sons Limited',NULL,NULL,NULL,NULL,'femijohn377@yahoo.com',NULL,NULL,NULL,67,'Construction & Engineering, Electrical & HVAC, Equipment Rental, Facilities maintenance, Furnishing & Wood works, Logistics & Freight, Outsourced (Managed) Services, Printing & Branding, Professional Services, ',NULL,NULL,'Ghana','Ghana',NULL,NULL,'adeniyi','19 olawoyin street, anfani,challenge','Adeboyo & Sons Limited',NULL,NULL,NULL,NULL,'994',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'organization',0,NULL),
 	(20,'zenith1507987021','Zenith Bank Plc',NULL,NULL,NULL,NULL,'femijohn377@yahoo.com',NULL,NULL,NULL,67,'Construction & Engineering, Facilities maintenance, Metals & Mining, Professional Services, ',NULL,NULL,'Ghana','Ghana',NULL,NULL,'07037477388','19 olawoyin street, anfani,challenge','$bridgrName',NULL,NULL,NULL,NULL,'234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'organization',0,NULL),
 	(21,'brainwave1507987160','Brainwave Educonsult Limited',NULL,NULL,NULL,NULL,'fatah@gmail.com',NULL,NULL,NULL,67,'Catering Services, Energy, Equipment Rental, IT & Technology, Logistics & Freight, Plumbing , Printing & Branding, Welding & Fabrication, ',NULL,NULL,'Niger','Niger',NULL,NULL,'07037477381','19 olawoyin street, anfani,challenge','But the problem in this is that if the workspace is damaged, and you delete it, all your settings are lost and everything is reset to the default NetBeans IDE settings.',NULL,NULL,NULL,NULL,'233',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'organization',0,NULL);
-
-/*!40000 ALTER TABLE `businessdetails` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table categories
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `categories`;
-
-CREATE TABLE `categories` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `parent_id` int(10) unsigned DEFAULT NULL,
-  `order` int(11) NOT NULL DEFAULT '1',
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `categories_slug_unique` (`slug`),
-  KEY `categories_parent_id_foreign` (`parent_id`),
-  CONSTRAINT `categories_parent_id_foreign` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-
-# Dump of table data_rows
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `data_rows`;
-
-CREATE TABLE `data_rows` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `data_type_id` int(10) unsigned NOT NULL,
-  `field` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `required` tinyint(1) NOT NULL DEFAULT '0',
-  `browse` tinyint(1) NOT NULL DEFAULT '1',
-  `read` tinyint(1) NOT NULL DEFAULT '1',
-  `edit` tinyint(1) NOT NULL DEFAULT '1',
-  `add` tinyint(1) NOT NULL DEFAULT '1',
-  `delete` tinyint(1) NOT NULL DEFAULT '1',
-  `details` text COLLATE utf8mb4_unicode_ci,
-  `order` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `data_rows_data_type_id_foreign` (`data_type_id`),
-  CONSTRAINT `data_rows_data_type_id_foreign` FOREIGN KEY (`data_type_id`) REFERENCES `data_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-LOCK TABLES `data_rows` WRITE;
-/*!40000 ALTER TABLE `data_rows` DISABLE KEYS */;
 
 INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, `required`, `browse`, `read`, `edit`, `add`, `delete`, `details`, `order`)
 VALUES
@@ -382,38 +191,6 @@ VALUES
 	(198,13,'requestHash','checkbox','RequestHash',0,0,0,0,0,0,NULL,9),
 	(199,11,'deleted_at','timestamp','Deleted At',0,1,1,1,1,1,NULL,26);
 
-/*!40000 ALTER TABLE `data_rows` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table data_types
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `data_types`;
-
-CREATE TABLE `data_types` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name_singular` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name_plural` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icon` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `model_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `policy_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `controller` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `generate_permissions` tinyint(1) NOT NULL DEFAULT '0',
-  `server_side` tinyint(4) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `data_types_name_unique` (`name`),
-  UNIQUE KEY `data_types_slug_unique` (`slug`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-LOCK TABLES `data_types` WRITE;
-/*!40000 ALTER TABLE `data_types` DISABLE KEYS */;
-
 INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `display_name_plural`, `icon`, `model_name`, `policy_name`, `controller`, `description`, `generate_permissions`, `server_side`, `created_at`, `updated_at`)
 VALUES
 	(1,'posts','posts','Post','Posts','voyager-news','TCG\\Voyager\\Models\\Post','TCG\\Voyager\\Policies\\PostPolicy','','',1,0,'2017-10-30 01:37:52','2017-10-30 01:37:52'),
@@ -427,24 +204,6 @@ VALUES
 	(11,'userdetails','userdetails','User Detail','User Details',NULL,'App\\UDetails',NULL,NULL,NULL,1,0,'2017-10-30 04:49:37','2017-11-18 22:56:21'),
 	(12,'rfqcontents','rfqcontents','RFQ Content','RFQ Contents','voyager-diamond','App\\Rfqcontent',NULL,NULL,NULL,1,0,'2017-11-07 00:31:34','2017-11-07 01:36:14'),
 	(13,'requestitems','requestitems','Request Item','Request Items','voyager-dollar','App\\Requestitem',NULL,NULL,NULL,1,0,'2017-11-07 00:57:07','2017-11-07 00:57:07');
-
-/*!40000 ALTER TABLE `data_types` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table fieldcategories
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `fieldcategories`;
-
-CREATE TABLE `fieldcategories` (
-  `categoryName` varchar(100) DEFAULT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `fieldcategories` WRITE;
-/*!40000 ALTER TABLE `fieldcategories` DISABLE KEYS */;
 
 INSERT INTO `fieldcategories` (`categoryName`, `id`)
 VALUES
@@ -469,37 +228,6 @@ VALUES
 	('Electrical & HVAC',19),
 	('Plumbing ',20);
 
-/*!40000 ALTER TABLE `fieldcategories` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table menu_items
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `menu_items`;
-
-CREATE TABLE `menu_items` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `menu_id` int(10) unsigned DEFAULT NULL,
-  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `target` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '_self',
-  `icon_class` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `color` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `parent_id` int(11) DEFAULT NULL,
-  `order` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `route` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `parameters` text COLLATE utf8mb4_unicode_ci,
-  PRIMARY KEY (`id`),
-  KEY `menu_items_menu_id_foreign` (`menu_id`),
-  CONSTRAINT `menu_items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-LOCK TABLES `menu_items` WRITE;
-/*!40000 ALTER TABLE `menu_items` DISABLE KEYS */;
-
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`)
 VALUES
 	(1,1,'Dashboard','','_self','voyager-boat',NULL,NULL,1,'2017-10-30 01:37:53','2017-10-30 01:37:53','voyager.dashboard',NULL),
@@ -517,166 +245,9 @@ VALUES
 	(19,1,'RFQ Contents','/admin/rfqcontents','_self','voyager-diamond','#000000',NULL,8,'2017-11-07 00:31:35','2017-11-07 08:31:22',NULL,''),
 	(20,1,'Request Items','/admin/requestitems','_self','voyager-dollar',NULL,NULL,9,'2017-11-07 00:57:08','2017-11-07 08:31:22',NULL,NULL);
 
-/*!40000 ALTER TABLE `menu_items` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table menus
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `menus`;
-
-CREATE TABLE `menus` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `menus_name_unique` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-LOCK TABLES `menus` WRITE;
-/*!40000 ALTER TABLE `menus` DISABLE KEYS */;
-
 INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`)
 VALUES
 	(1,'admin','2017-10-30 01:37:53','2017-10-30 01:37:53');
-
-/*!40000 ALTER TABLE `menus` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table messages
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `messages`;
-
-CREATE TABLE `messages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `senderId` int(11) DEFAULT NULL,
-  `receiverId` int(11) DEFAULT NULL,
-  `readStatus` tinyint(4) DEFAULT NULL,
-  `message` text,
-  `bidId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
-# Dump of table migrations
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `migrations`;
-
-CREATE TABLE `migrations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-LOCK TABLES `migrations` WRITE;
-/*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-
-INSERT INTO `migrations` (`id`, `migration`, `batch`)
-VALUES
-	(1,'2014_10_12_000000_create_users_table',1),
-	(2,'2014_10_12_100000_create_password_resets_table',1),
-	(3,'2016_01_01_000000_add_voyager_user_fields',1),
-	(4,'2016_01_01_000000_create_data_types_table',1),
-	(5,'2016_01_01_000000_create_pages_table',1),
-	(6,'2016_01_01_000000_create_posts_table',1),
-	(7,'2016_02_15_204651_create_categories_table',1),
-	(8,'2016_05_19_173453_create_menu_table',1),
-	(9,'2016_10_21_190000_create_roles_table',1),
-	(10,'2016_10_21_190000_create_settings_table',1),
-	(11,'2016_11_30_135954_create_permission_table',1),
-	(12,'2016_11_30_141208_create_permission_role_table',1),
-	(13,'2016_12_26_201236_data_types__add__server_side',1),
-	(14,'2017_01_13_000000_add_route_to_menu_items_table',1),
-	(15,'2017_01_14_005015_create_translations_table',1),
-	(16,'2017_01_15_000000_add_permission_group_id_to_permissions_table',1),
-	(17,'2017_01_15_000000_create_permission_groups_table',1),
-	(18,'2017_01_15_000000_make_table_name_nullable_in_permissions_table',1),
-	(19,'2017_03_06_000000_add_controller_to_data_types_table',1),
-	(20,'2017_04_11_000000_alter_post_nullable_fields_table',1),
-	(21,'2017_04_21_000000_add_order_to_data_rows_table',1),
-	(22,'2017_07_05_210000_add_policyname_to_data_types_table',1),
-	(23,'2017_08_05_000000_add_group_to_settings_table',1);
-
-/*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table pages
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `pages`;
-
-CREATE TABLE `pages` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `author_id` int(11) NOT NULL,
-  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `excerpt` text COLLATE utf8mb4_unicode_ci,
-  `body` text COLLATE utf8mb4_unicode_ci,
-  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meta_description` text COLLATE utf8mb4_unicode_ci,
-  `meta_keywords` text COLLATE utf8mb4_unicode_ci,
-  `status` enum('ACTIVE','INACTIVE') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'INACTIVE',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `pages_slug_unique` (`slug`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-
-# Dump of table password_resets
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `password_resets`;
-
-CREATE TABLE `password_resets` (
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-
-# Dump of table permission_groups
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `permission_groups`;
-
-CREATE TABLE `permission_groups` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `permission_groups_name_unique` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-
-# Dump of table permission_role
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `permission_role`;
-
-CREATE TABLE `permission_role` (
-  `permission_id` int(10) unsigned NOT NULL,
-  `role_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`permission_id`,`role_id`),
-  KEY `permission_role_permission_id_index` (`permission_id`),
-  KEY `permission_role_role_id_index` (`role_id`),
-  CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-LOCK TABLES `permission_role` WRITE;
-/*!40000 ALTER TABLE `permission_role` DISABLE KEYS */;
 
 INSERT INTO `permission_role` (`permission_id`, `role_id`)
 VALUES
@@ -746,29 +317,6 @@ VALUES
 	(73,1),
 	(74,1);
 
-/*!40000 ALTER TABLE `permission_role` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table permissions
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `permissions`;
-
-CREATE TABLE `permissions` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `table_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `permission_group_id` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `permissions_key_index` (`key`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-LOCK TABLES `permissions` WRITE;
-/*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
-
 INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`, `permission_group_id`)
 VALUES
 	(1,'browse_admin',NULL,'2017-10-30 01:37:54','2017-10-30 01:37:54',NULL),
@@ -836,74 +384,6 @@ VALUES
 	(73,'add_requestitems','requestitems','2017-11-07 00:57:08','2017-11-07 00:57:08',NULL),
 	(74,'delete_requestitems','requestitems','2017-11-07 00:57:08','2017-11-07 00:57:08',NULL);
 
-/*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table posts
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `posts`;
-
-CREATE TABLE `posts` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `author_id` int(11) NOT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `seo_title` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `excerpt` text COLLATE utf8mb4_unicode_ci,
-  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `meta_description` text COLLATE utf8mb4_unicode_ci,
-  `meta_keywords` text COLLATE utf8mb4_unicode_ci,
-  `status` enum('PUBLISHED','DRAFT','PENDING') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'DRAFT',
-  `featured` tinyint(1) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `posts_slug_unique` (`slug`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-
-# Dump of table requestforexplanations
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `requestforexplanations`;
-
-CREATE TABLE `requestforexplanations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `senderId` int(11) DEFAULT NULL,
-  `receiverId` int(11) DEFAULT NULL,
-  `readStatus` tinyint(4) DEFAULT NULL,
-  `message` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
-# Dump of table requestitems
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `requestitems`;
-
-CREATE TABLE `requestitems` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `itemName` varchar(191) DEFAULT NULL,
-  `itemDescription` text,
-  `unitOfMeasure` varchar(50) DEFAULT NULL,
-  `itemQuantity` varchar(191) DEFAULT NULL,
-  `requestId` int(11) DEFAULT NULL,
-  `createdTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `requestProfileBridgrName` varchar(50) DEFAULT NULL,
-  `requestHash` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `requestitems` WRITE;
-/*!40000 ALTER TABLE `requestitems` DISABLE KEYS */;
-
 INSERT INTO `requestitems` (`id`, `itemName`, `itemDescription`, `unitOfMeasure`, `itemQuantity`, `requestId`, `createdTime`, `requestProfileBridgrName`, `requestHash`)
 VALUES
 	(54,'Kerosine','The Senior Resident Representative and Mission Chief for Nigeria, Africa Department, IMF, Mr. Amine Mati, who','GALLON  (gal)','12',30,'2017-10-30 09:35:37','joshconceps1507348392','72a0346d466645ea39b321482bf5d095'),
@@ -921,72 +401,6 @@ VALUES
 	(93,'Department, IMF, Mr. Amine Mati, who','requisite  Department, IMF, Mr. Amin requisite  Department, IMF, Mr. Amine Mati, who requisite  Department, IMF, Mr. Amine Mati, who \n e Mati, who','YARD (yrd)','10',33,'2017-11-01 13:16:56','joshconceps1507348392','b1b3141d9b857f4820b129b52c29d463'),
 	(94,'Department, IMF, Mr. Amine Mati, who','requisite  Department, IMF, Mr. Amin requisite  Department, IMF, Mr. Amine Mati, who requisite  Department, IMF, Mr. Amine Mati, who \n e Mati, who','YARD (yrd)','10',33,'2017-11-01 13:16:56','joshconceps1507348392','b1b3141d9b857f4820b129b52c29d463'),
 	(95,'item name for first Item','item name for first Itemitem name for first Itemitem name for first Item','STONE (stn)','2345',34,'2017-11-02 12:23:59','joshconceps1507348392','rfq9da5fb745ef71d85004ec925125a26e5');
-
-/*!40000 ALTER TABLE `requestitems` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table requests
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `requests`;
-
-CREATE TABLE `requests` (
-  `requestTitle` varchar(300) DEFAULT NULL,
-  `requestCategory` varchar(50) DEFAULT NULL,
-  `projectCostEstimate` double DEFAULT NULL,
-  `requestCountry` varchar(100) DEFAULT NULL,
-  `currency` varchar(50) DEFAULT NULL,
-  `requestType` varchar(50) DEFAULT NULL,
-  `numberOfSuppliers` int(11) DEFAULT NULL,
-  `preferredSuppliers` text,
-  `siteInspection` varchar(5) DEFAULT NULL,
-  `requestRequisite` text,
-  `paymentMethod` varchar(50) DEFAULT NULL,
-  `supplyCountry` varchar(100) DEFAULT NULL,
-  `bidSubmissionOpenDate` datetime DEFAULT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `requestRefNumber` varchar(100) DEFAULT NULL,
-  `usdLocalExchangeRate` varchar(50) DEFAULT NULL,
-  `requesBidStructure` varchar(50) DEFAULT NULL,
-  `requestAddress` varchar(191) DEFAULT NULL,
-  `supplierList` text,
-  `bidSubmissionCloseDate` datetime DEFAULT NULL,
-  `paymentModel` varchar(50) DEFAULT NULL,
-  `deliveryTimeline` varchar(50) DEFAULT NULL,
-  `applicableVAT` varchar(50) DEFAULT NULL,
-  `applicableWHT` varchar(50) DEFAULT NULL,
-  `requestDescription` text,
-  `closedBidOpeningDate` datetime DEFAULT NULL,
-  `vendorCountry` text,
-  `paymentTerms` varchar(50) DEFAULT NULL,
-  `requestProfileId` double(11,0) DEFAULT NULL,
-  `suppliersOfChoice` text,
-  `requestRequisites` text,
-  `createdTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `requestHash` varchar(50) DEFAULT NULL,
-  `requestProfileBridgrName` varchar(100) DEFAULT NULL,
-  `requestTerms` varchar(100) DEFAULT NULL,
-  `isPublished` tinyint(1) DEFAULT '0',
-  `requestAccessToBiddersDate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `ageOfSuppliers` varchar(50) DEFAULT NULL,
-  `biddersLegalStructure` varchar(50) DEFAULT NULL,
-  `biddersAgeOfFirstProject` varchar(50) DEFAULT NULL,
-  `biddersMinimumClient` varchar(50) DEFAULT NULL,
-  `bidderHasbusinessCertification` tinyint(1) NOT NULL DEFAULT '0',
-  ` bidderHasServiceWarranty` tinyint(1) DEFAULT '0',
-  `bidderHasQualityPolicy` tinyint(1) DEFAULT '0',
-  `bidderHasAuditedFinancialStatement` tinyint(1) DEFAULT '0',
-  `bidderHasPermitsLicense` tinyint(1) DEFAULT '0',
-  `bidderHasVAT_TINCertificate` tinyint(1) DEFAULT '0',
-  `bidderHasIncomeTaxClearance` tinyint(1) DEFAULT '0',
-  `bidderHasSafetyPolicy` tinyint(1) DEFAULT '0',
-  `timeHash` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `requests` WRITE;
-/*!40000 ALTER TABLE `requests` DISABLE KEYS */;
 
 INSERT INTO `requests` (`requestTitle`, `requestCategory`, `projectCostEstimate`, `requestCountry`, `currency`, `requestType`, `numberOfSuppliers`, `preferredSuppliers`, `siteInspection`, `requestRequisite`, `paymentMethod`, `supplyCountry`, `bidSubmissionOpenDate`, `id`, `requestRefNumber`, `usdLocalExchangeRate`, `requesBidStructure`, `requestAddress`, `supplierList`, `bidSubmissionCloseDate`, `paymentModel`, `deliveryTimeline`, `applicableVAT`, `applicableWHT`, `requestDescription`, `closedBidOpeningDate`, `vendorCountry`, `paymentTerms`, `requestProfileId`, `suppliersOfChoice`, `requestRequisites`, `createdTime`, `requestHash`, `requestProfileBridgrName`, `requestTerms`, `isPublished`, `requestAccessToBiddersDate`, `ageOfSuppliers`, `biddersLegalStructure`, `biddersAgeOfFirstProject`, `biddersMinimumClient`, `bidderHasbusinessCertification`, ` bidderHasServiceWarranty`, `bidderHasQualityPolicy`, `bidderHasAuditedFinancialStatement`, `bidderHasPermitsLicense`, `bidderHasVAT_TINCertificate`, `bidderHasIncomeTaxClearance`, `bidderHasSafetyPolicy`, `timeHash`)
 VALUES
@@ -1017,80 +431,10 @@ VALUES
 	('Test Request Title','supply',23000000,'Nigeria','CAD - Canada Dollar',NULL,5,NULL,NULL,NULL,'online',NULL,'2017-11-08 00:12:00',25,NULL,'380','close','3 Abosee Aro, Lagos',NULL,'2017-12-14 13:02:00','Upfront','50','5','10','Test Request Description',NULL,'Any, Nigeria','180',11,'badmusajadi1506951564, hormetintegratedservices1507348304, joshconceps1507348392, syntaxinnovation1506952140,','Professional Indemnity is Required, Site Audit is Required, Site Inspection is Required, Warranty is Required','2017-10-20 00:21:49','a42f214f6dbb2378b31dd6e6d10321a8','syntaxinnovation1506952140',NULL,0,'2017-10-20 00:12:00','10','limited','10','5',1,0,1,0,0,1,1,1,NULL),
 	('New Requests - RFQ','supply',23000000,'Austria','CAD - Canada Dollar',NULL,10,NULL,NULL,NULL,'onsite',NULL,'2017-10-28 12:12:00',26,NULL,'400','close','New Requests - RFQ',NULL,'2017-10-18 12:12:00','Upfront','30','5','3','New Requests - RFQ','2017-10-27 12:12:00','Nigeria, Afghanistan, American Samoa, Andorra','60',11,'hormetintegratedservices1507348304, joshconceps1507348392, tsabointech1507348432,','Professional Indemnity is Required, Site Audit is Required, Site Inspection is Required, Warranty is Required','2017-10-20 00:27:24','eb97946b2018b7e5a49c3a50a768fd5f','syntaxinnovation1506952140','1, 9',0,'2017-10-20 00:30:12','5','limited','5','5',1,0,1,1,1,0,0,0,NULL);
 
-/*!40000 ALTER TABLE `requests` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table rfqcontents
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `rfqcontents`;
-
-CREATE TABLE `rfqcontents` (
-  `title` text,
-  `mainNumber` int(11) DEFAULT NULL,
-  `sectionNumber` double DEFAULT NULL,
-  `subSectionNumber` double DEFAULT NULL,
-  `isTitle` text,
-  `isSection` tinyint(1) DEFAULT '0',
-  `isSubsection` tinyint(1) DEFAULT '0',
-  `content` text,
-  `requestHash` varchar(191) DEFAULT NULL,
-  `dateCreated` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `lastModified` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
-# Dump of table roles
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `roles`;
-
-CREATE TABLE `roles` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `roles_name_unique` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-LOCK TABLES `roles` WRITE;
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-
 INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`)
 VALUES
 	(1,'admin','Administrator','2017-10-30 01:37:53','2017-10-30 01:37:53'),
 	(2,'sub','sub','2017-10-31 12:44:13','2017-10-31 12:44:13');
-
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table settings
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `settings`;
-
-CREATE TABLE `settings` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `display_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `details` text COLLATE utf8mb4_unicode_ci,
-  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order` int(11) NOT NULL DEFAULT '1',
-  `group` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `settings_key_unique` (`key`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-LOCK TABLES `settings` WRITE;
-/*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 
 INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`, `order`, `group`)
 VALUES
@@ -1105,25 +449,6 @@ VALUES
 	(9,'admin.icon_image','Admin Icon Image','settings/October2017/apple grey.png','','image',4,'Admin'),
 	(10,'admin.google_analytics_client_id','Google Analytics Client ID (used for admin dashboard)','897088659312-647n0c5nskdfberepbvj14cpu33opis1.apps.googleusercontent.com','','text',1,'Admin');
 
-/*!40000 ALTER TABLE `settings` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table supplierfilters
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `supplierfilters`;
-
-CREATE TABLE `supplierfilters` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `filterName` varchar(100) DEFAULT NULL,
-  `filterStringRef` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `supplierfilters` WRITE;
-/*!40000 ALTER TABLE `supplierfilters` DISABLE KEYS */;
-
 INSERT INTO `supplierfilters` (`id`, `filterName`, `filterStringRef`)
 VALUES
 	(1,'Business Certification Required','bidderHasbusinessCertification'),
@@ -1134,27 +459,6 @@ VALUES
 	(6,'VAT TIN Certificate Required','bidderHasVAT_TINCertificate'),
 	(7,'Income Tax Clearance Required','bidderHasIncomeTaxClearance'),
 	(8,'Safety Policy Required','bidderHasSafetyPolicy');
-
-/*!40000 ALTER TABLE `supplierfilters` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table terms
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `terms`;
-
-CREATE TABLE `terms` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `termTitle` varchar(191) DEFAULT NULL,
-  `termContent` text,
-  `termCreator` varchar(191) DEFAULT NULL,
-  `createdTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `terms` WRITE;
-/*!40000 ALTER TABLE `terms` DISABLE KEYS */;
 
 INSERT INTO `terms` (`id`, `termTitle`, `termContent`, `termCreator`, `createdTime`)
 VALUES
@@ -1167,43 +471,6 @@ VALUES
 	(7,'termConditions','termConditions','adeboyo1507842531',NULL),
 	(8,'The Location.reload()','Aug 24, 2017 - The Location.reload() method reloads the resource from the current URL. Its optional unique parameter is a Boolean, which, when it is true, causes the page to always be reloaded from the server. If it is false or not specified, the browser may reload the page from its cache.','adeboyo1507842531',NULL),
 	(9,'Payment Terms in Synnod','Pages/Visit: This number is the average amount of pages a single visitor is viewing before leaving the website. Remember that this is just an average, some visitors view many more pages and some may view less.','syntaxinnovation1506952140','2017-10-20 00:29:42');
-
-/*!40000 ALTER TABLE `terms` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table translations
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `translations`;
-
-CREATE TABLE `translations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `table_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `column_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foreign_key` int(10) unsigned NOT NULL,
-  `locale` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `translations_table_name_column_name_foreign_key_locale_unique` (`table_name`,`column_name`,`foreign_key`,`locale`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-
-# Dump of table unitsofmeasure
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `unitsofmeasure`;
-
-CREATE TABLE `unitsofmeasure` (
-  `UNITS` varchar(191) DEFAULT NULL,
-  `ABBREVIATIONS` varchar(191) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `unitsofmeasure` WRITE;
-/*!40000 ALTER TABLE `unitsofmeasure` DISABLE KEYS */;
 
 INSERT INTO `unitsofmeasure` (`UNITS`, `ABBREVIATIONS`)
 VALUES
@@ -1240,96 +507,13 @@ VALUES
 	('LUMPSUM','lmp'),
 	('','');
 
-/*!40000 ALTER TABLE `unitsofmeasure` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table userdetails
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `userdetails`;
-
-CREATE TABLE `userdetails` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userEmail` varchar(100) DEFAULT NULL,
-  `userMobile` varchar(100) DEFAULT NULL,
-  `firstName` varchar(100) DEFAULT NULL,
-  `lastName` varchar(100) DEFAULT NULL,
-  `stateOfResidence` varchar(100) DEFAULT NULL,
-  `homeAddress` varchar(100) DEFAULT NULL,
-  `subscriptonId` int(11) DEFAULT NULL,
-  `isCompanyInfo` tinyint(1) DEFAULT NULL,
-  `typeTag` text,
-  `eSignature` varchar(100) DEFAULT NULL,
-  `smsVerifyCode` varchar(100) DEFAULT NULL,
-  `emailVerifyString` varchar(100) DEFAULT NULL,
-  `isMobileVerified` tinyint(1) DEFAULT '0',
-  `isEmailVerified` tinyint(1) DEFAULT '0',
-  `userPassword` varchar(100) DEFAULT NULL,
-  `activeToken` varchar(100) DEFAULT NULL,
-  `userCountry` varchar(100) DEFAULT NULL,
-  `userState` varchar(100) DEFAULT NULL,
-  `userAddress` varchar(100) DEFAULT NULL,
-  `userWebsite` varchar(100) DEFAULT NULL,
-  `userFacebook` varchar(100) DEFAULT NULL,
-  `userTwitter` varchar(100) DEFAULT NULL,
-  `userLinkedin` varchar(100) DEFAULT NULL,
-  `createdTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `userkey1` (`userEmail`) USING BTREE,
-  UNIQUE KEY `userkey2` (`userMobile`),
-  KEY `eSignature` (`eSignature`,`smsVerifyCode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `userdetails` WRITE;
-/*!40000 ALTER TABLE `userdetails` DISABLE KEYS */;
-
 INSERT INTO `userdetails` (`id`, `userEmail`, `userMobile`, `firstName`, `lastName`, `stateOfResidence`, `homeAddress`, `subscriptonId`, `isCompanyInfo`, `typeTag`, `eSignature`, `smsVerifyCode`, `emailVerifyString`, `isMobileVerified`, `isEmailVerified`, `userPassword`, `activeToken`, `userCountry`, `userState`, `userAddress`, `userWebsite`, `userFacebook`, `userTwitter`, `userLinkedin`, `createdTime`, `deleted_at`)
 VALUES
 	(67,'niyi@bridgr.com','2347037477380','AbdulFathah','Salaudeen',NULL,NULL,0,NULL,NULL,NULL,'958766','051a3f4d5cb85195d8b4eb52c3dd4387',1,1,'8bd10a61f0d7f76f18e63431c4ec4cc8','4cc01c7fe20d17b6c673751b99276c8c','Nigeria','Lagos','$refreshSession-',NULL,'1','1','1','2017-10-17 05:04:28',NULL),
 	(69,'michael@okoh.co.uk','08148888971','Michael','Okoh','Lagos','D55 Landbridge Avenue, Victoria Island, Lagos',0,NULL,NULL,NULL,NULL,NULL,0,0,NULL,NULL,'Nigeria','Lagos',NULL,NULL,'0','0','0','2017-11-18 22:29:07','2017-11-18 21:29:17'),
 	(70,'neo@okoh.co.uk','09054867834','Michael','Smatt','Lagos',NULL,0,NULL,NULL,NULL,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL,NULL,'0','0','0','2017-11-19 17:30:44',NULL);
 
-/*!40000 ALTER TABLE `userdetails` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table users
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `users`;
-
-CREATE TABLE `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `role_id` int(11) DEFAULT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `avatar` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT 'users/default.png',
-  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `password`, `remember_token`, `created_at`, `updated_at`)
 VALUES
 	(1,1,'Michael Okoh','trojan@hotels.ng','users/default.png','$2y$10$EaWPpwMIgaUIjWz/y0pFUePnFzzCE9RnbULCgyzFR0w7lu.paFQ7e','d6EnbQwREoULB0IuYoxJW6No0EbM6n34vbFIbAUEv7ooT9aT4H7mlclqX5Zi','2017-10-30 01:40:59','2017-10-30 01:40:59'),
 	(2,NULL,'Emesibe Ene','emesibe@bridgr.com','users/default.png','$2y$10$T7NjLDITkd5TSM8UqUSPj.IMGnsJpUJRjs0zGRGRxWEIQhLYErmSe',NULL,'2017-11-07 09:43:58','2017-11-07 09:43:58');
-
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
